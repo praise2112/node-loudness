@@ -3,6 +3,7 @@ declare interface Loudness {
   getVolume(): Promise<number>
   setMuted(muted: boolean): Promise<void>
   setVolume(volume: number): Promise<void>
+  setWindowsExePath(path: string): void
 }
 
 declare const loudness: Loudness

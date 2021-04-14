@@ -15,7 +15,7 @@ switch (os.type()) {
     throw new Error('Your OS is currently not supported by node-loudness.')
 }
 
-module.exports = {
+const exportObj = {
   setVolume (volume) {
     return impl.setVolume(volume)
   },
@@ -29,3 +29,11 @@ module.exports = {
     return impl.getMuted()
   }
 }
+
+if (os.type() === 'Windows_NT') {
+  exportObj.setWindowsExePath = function (path) {
+    impl.setWindowsExePath(path)
+  }
+}
+
+module.exports = exportObj
